@@ -57,7 +57,7 @@ export const deleteTutor = async (req: Request, res: Response) => {
 };
 
 export const getTutorAvailabilityById = async (req: Request, res: Response) => {
-  try {
+  try { 
     const tutorId = req.params.id; // Assuming the ID is passed as part of the URL
     const tutor = await Tutor.findById(tutorId, 'availableSlots'); // Select only the availableSlots field
 
