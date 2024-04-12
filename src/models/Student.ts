@@ -3,8 +3,6 @@ import mongoose, { Document, Schema } from 'mongoose';
 // Defining the Student interface
 interface IStudent extends Document {
   name: string;
-  email: string;
-  password: string;
   subjectsOfInterest: string[];
   bookedSessions: {
     tutorId: mongoose.Types.ObjectId;
@@ -14,9 +12,7 @@ interface IStudent extends Document {
 
 // Student schema definition
 const StudentSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  name: { type: String },
   subjectsOfInterest: [{ type: String }],
   bookedSessions: [{
     tutorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tutor', required: true },

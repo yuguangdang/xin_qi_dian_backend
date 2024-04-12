@@ -3,8 +3,6 @@ import mongoose, { Document, Schema } from 'mongoose';
 // Defining the Tutor interface
 interface ITutor extends Document {
   name: string;
-  email: string;
-  password: string;
   subjects: string[];
   availableSlots: {
     startTime: Date;
@@ -22,9 +20,7 @@ interface ITutor extends Document {
 
 // Tutor schema definition
 const TutorSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  name: { type: String },
   subjects: [{ type: String }],
   availableSlots: [{
     startTime: { type: Date, required: true },
