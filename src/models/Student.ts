@@ -6,18 +6,21 @@ interface IStudent extends Document {
   subjectsOfInterest: string[];
   bookedSessions: {
     tutorId: mongoose.Types.ObjectId;
-    slotId: mongoose.Types.ObjectId;
+    startTime: Date;
+    endTime: Date;
   }[];
 }
 
-// Student schema definition
+
 const StudentSchema: Schema = new Schema({
-  name: { type: String },
-  subjectsOfInterest: [{ type: String }],
+  name: { type: String, required: true },
+  subjectsOfInterest: [{ type: String, required: true }],
   bookedSessions: [{
     tutorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tutor', required: true },
-    slotId: { type: mongoose.Schema.Types.ObjectId, required: true }
+    startTime: { type: Date, required: true },
+    endTime: { type: Date, required: true }
   }]
 });
 
 export const Student = mongoose.model<IStudent>('Student', StudentSchema);
+

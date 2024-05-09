@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import tutorsRoutes from "./routes/tutors.route";
 import studentsRoutes from "./routes/students.route";
 import authRoutes from "./routes/auth.route";
+import bookingRoutes from './routes/booking.route';
 import errorHandler from "./middleware/errorHandler";
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/api/tutors", tutorsRoutes);
 app.use("/api/students", studentsRoutes);
 app.use("/api/auth", authRoutes);
+app.use('/api/booking', bookingRoutes);
 
 // After all other middleware and routes
 app.use(errorHandler); // Use the error handling middleware
