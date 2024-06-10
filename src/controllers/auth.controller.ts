@@ -13,7 +13,7 @@ export const register = async (req: Request, res: Response) => {
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const { email, password, role } = req.body;
+    const { email, password, role, name } = req.body;
 
     const user = new User({
       email,
@@ -25,7 +25,7 @@ export const register = async (req: Request, res: Response) => {
 
     let profile;
     if (role === "student") {
-      profile = new Student({ userId: user._id });
+      profile = new Student({ userId: user._id, name: name});
     } else if (role === "tutor") {
       profile = new Tutor({ userId: user._id });
     } else {
